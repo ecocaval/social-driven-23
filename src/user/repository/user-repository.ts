@@ -1,7 +1,14 @@
-import { User } from "@prisma/client";
+import { User } from '@prisma/client';
 
 export abstract class UserRepository {
-    abstract create(name: string, email: string, password: string, avatar: string): Promise<User>
+  abstract signUp(
+    name: string,
+    email: string,
+    password: string,
+    avatar: string,
+  ): Promise<User>;
 
-    abstract findByEmail(password: string): Promise<Boolean>
+  abstract emailIsInUse(password: string): Promise<Boolean>;
+
+  abstract findByEmail(email: string): Promise<User>;
 }
