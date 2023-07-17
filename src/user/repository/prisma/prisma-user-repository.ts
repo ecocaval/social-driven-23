@@ -18,7 +18,7 @@ export class PrismaUserRepository implements UserRepository {
         name,
         email,
         password,
-        avatar,
+        avatar
       },
     });
   }

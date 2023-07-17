@@ -11,22 +11,24 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String 
-  email String @unique
-  password String
-  avatar String
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  password     String
+  avatar       String
   publications Publication[]
+  createdAt    DateTime      @default(now())
 }
 
 model Publication {
-  id Int @id @default(autoincrement())
-  author User @relation(fields: [authorId], references: [id])
-  authorId Int
-  image String 
-  title String 
-  text String 
-  dateToPublish DateTime 
-  published Boolean 
-  socialMedia String 
+  id            Int      @id @default(autoincrement())
+  author        User     @relation(fields: [authorId], references: [id])
+  authorId      Int
+  image         String
+  title         String
+  text          String
+  dateToPublish DateTime
+  published     Boolean
+  socialMedia   String
+  createdAt     DateTime @default(now())
 }
