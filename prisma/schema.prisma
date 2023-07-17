@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+// This is your Prisma schema 
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -8,4 +8,25 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  password String
+  avatar String
+  publications Publication[]
+}
+
+model Publication {
+  id Int @id @default(autoincrement())
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+  image String 
+  title String 
+  text String 
+  dateToPublish DateTime 
+  published Boolean 
+  socialMedia String 
 }
